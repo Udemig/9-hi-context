@@ -1,7 +1,9 @@
-import { useContext } from "react";
-import SideBar from "../components/SideBar";
-import VideoCard from "../components/VideoCard";
-import { VideoContext } from "../context/videoContext";
+import { useContext } from 'react';
+import SideBar from '../components/SideBar';
+import VideoCard from '../components/VideoCard';
+import { VideoContext } from '../context/videoContext';
+import Loader from '../components/Loader';
+import Error from '../components/Error';
 
 const Feed = () => {
   const { videos, isLoading, error } = useContext(VideoContext);
@@ -11,16 +13,11 @@ const Feed = () => {
       <SideBar />
       <div className="videos">
         {isLoading ? (
-          <p>Yükleniyor</p>
+          <Loader />
         ) : error ? (
-          <p>Error</p>
+          <Error message={error} />
         ) : (
-          videos?.map(
-            (item) =>
-              item.type === "video" && (
-                <VideoCard key={item.videoId} video={item} />
-              )
-          )
+          videos.map((item) => <VideoCard key={item.videoId} video={item} />)
         )}
       </div>
     </div>

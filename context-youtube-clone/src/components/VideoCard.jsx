@@ -1,10 +1,14 @@
-import millify from "millify";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import millify from 'millify';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 const VideoCard = ({ video }) => {
   const [isHover, setIsHover] = useState(false);
 
   const navigate = useNavigate();
+
+  // veri tipi video değilse / shor list vs. olabiliyor bileşen hiç bir şey render etmesin
+  if (video.type !== 'video') return;
+
   return (
     <div
       onClick={() => navigate(`/watch?v=${video.videoId}`)}
@@ -37,7 +41,7 @@ const VideoCard = ({ video }) => {
           <div className="flex gap-3">
             <p className="flex gap-1">
               <span>{millify(video.viewCount)}</span>
-              <span className="text"> Görüntülenme</span>*{" "}
+              <span className="text"> Görüntülenme</span>*{' '}
             </p>
             <p className="whitespace-nowrap text-[14px]">
               {video.publishedTimeText}
