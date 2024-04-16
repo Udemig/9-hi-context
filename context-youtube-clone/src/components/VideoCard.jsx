@@ -1,7 +1,7 @@
 import millify from 'millify';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-const VideoCard = ({ video }) => {
+const VideoCard = ({ video, isRow }) => {
   const [isHover, setIsHover] = useState(false);
 
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const VideoCard = ({ video }) => {
       onClick={() => navigate(`/watch?v=${video.videoId}`)}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
-      className="cursor-pointer"
+      className={`${isRow ? 'row' : ''} cursor-pointer`}
     >
       {/* resim alanı */}
       <div className="">

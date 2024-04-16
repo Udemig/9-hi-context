@@ -30,6 +30,7 @@ const VideoDetail = () => {
       <div className="">
         <div className="h-[30vh] md:h-[50vh] lg:h-[60vh]">
           <ReactPlayer
+            controls
             width={'100%'}
             height={'100%'}
             url={`https://www.youtube.com/watch?v=${id}`}
@@ -48,9 +49,9 @@ const VideoDetail = () => {
       </div>
 
       {/* alakalı videolar */}
-      <div className="flex flex-col gap-5 ps-5">
+      <div className="wrapper flex flex-col gap-5 ps-5">
         {video?.relatedVideos.data.map((item) => (
-          <VideoCard key={item.videoId} video={item} />
+          <VideoCard isRow={true} key={item.videoId} video={item} />
         ))}
       </div>
     </div>

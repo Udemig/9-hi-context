@@ -1,8 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Feed from "./pages/Feed";
-import Undefined from "./pages/Undefined";
-import VideoDetail from "./pages/VideoDetail";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Feed from './pages/Feed';
+import Undefined from './pages/Undefined';
+import VideoDetail from './pages/VideoDetail';
+import Results from './pages/Results';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Feed />} />
         <Route path="/watch" element={<VideoDetail />} />
+        <Route path="/results" element={<Results />} />
         <Route path="*" element={<Undefined />} />
       </Routes>
     </BrowserRouter>
